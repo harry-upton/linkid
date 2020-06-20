@@ -38,7 +38,7 @@ if [ "$adding" = "0" ]; then
     echo "Please enter an id. Use the --help flag for help."
     exit 1
   else
-    value=$(grep "$id" links | sed 's/.*,//')
+    value=$(grep "$id" $links | sed 's/.*,//')
     #value=$(grep "$id" data.txt | sed 's/^[^,]*//')
     if [ "$value" = "" ]; then
       echo "No match found! (IDs are lowercase)"
@@ -54,7 +54,7 @@ if [ "$link" = "" ]; then
   exit 1
 else
   # Convert ID(eg ghik) to 4 numbers in the format a,b,c,d
-  last=$(tail -n 1 links | sed 's/,.*//')
+  last=$(tail -n 1 $links | sed 's/,.*//')
   a=$(ord ${last:0:1})
   b=$(ord ${last:1:2})
   c=$(ord ${last:2:3})
@@ -94,6 +94,6 @@ else
   d=$(chr $d)
   id="$a$b$c$d"
 
-  echo "$id,$link" >> links
+  echo "$id,$link" >> $links
   exit 0
 fi
