@@ -95,5 +95,6 @@ else
   id="$a$b$c$d"
 
   echo "$id,$link" >> $links
+  echo "Added $link to database with ID: $id"
   exit 0
 fi
